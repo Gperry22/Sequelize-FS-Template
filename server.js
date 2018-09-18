@@ -18,9 +18,9 @@ app.set("views", __dirname + "/views");
 
 //Start Routes====================================
 
-// const htmlRoutes = require("Route Path")
+const htmlRoutes = require("./routes/html-route.js")
 
-// app.use(htmlRoutes)
+app.use(htmlRoutes)
 
 
 //End Routes======================================

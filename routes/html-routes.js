@@ -1,7 +1,9 @@
-const express = require('express');
-const path = require("path");
+let express = require('express');
+// let path = require("path");
 
-const router = express.Router();
+
+let router = express.Router();
+
 module.exports = router;
 
 
@@ -21,9 +23,8 @@ module.exports = router;
  
  */
 
-// Sample route index route for home page
-//   router.get("/", function(req, res) {
-//     res.render("../views/homepage.jade");
-//   });
+  router.get("/", function(req, res) {
+    res.render("../views/home.jade");
+  });
 
 

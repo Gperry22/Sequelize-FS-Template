@@ -3,8 +3,8 @@
 
 module.exports = function(sequelize, DataTypes){
     let User = sequelize.define("User", {
-        email: DataTypes.STRING,
-        password: DataTypes.STRING
+        name: DataTypes.STRING,
+        number: DataTypes.INTEGER
     });
     return User;
 }

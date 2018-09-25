@@ -6,16 +6,25 @@ module.exports = router;
 
 
   // Sample  routes ========================================================
-  // GET route for getting all of the tasks taskr posted  user logged in
-  //Note this is a correct route that would go into the the models folder and find what you are 
-  //looking for. There is no model set up for this route though.
-  router.get("/api/tasks/:id", function(req, res) {
-    db.Task.findAll({
-      where: {
-        TaskrId: req.params.id
-      }
-    }).then(function(dbTask) {
-      res.json(dbTask);
-      // console.log("For Test" , dbTask);
+ //Route for creating user and number
+  router.post("/api/users", function(req, res) {
+    db.User.create(req.body).then(function(user) {
+      res.json(user);
     });
   });
+
+  //Route to get the users number
+  router.get("/api/users/:user", function(req, res) {
+    console.log("*************User*************");  
+    console.log(req.params);
+    console.log(req.body);  
+    console.log("**************************");
+    db.User.findOne({
+      where: {
+        name: req.params.user
+      }
+    }).then(function(userInfo) {
+      res.json(userInfo);
+    });
+  });
+  

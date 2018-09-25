@@ -1,3 +1,4 @@
+//Submit button click that takes in the users name and favorite number and sends them to the DB.
 $("#submitOne").on("click", (event) => {
     event.preventDefault();
     if ($("#numberInput").val().length <= 0 && $("#nameInput").val().length <= 0) {
@@ -7,14 +8,11 @@ $("#submitOne").on("click", (event) => {
             name: $("#nameInput").val().toLowerCase(),
             number: $("#numberInput").val().toLowerCase()
         }
-
-        console.log(user)
-
         $.ajax("/api/users", {
             type: "POST",
             data: user
         }).then(
-            alert(`"Name and Number added to the Database"`)
+            alert(`"Your Name and Number have been added to the Database"`)
         )
         $("#nameInput").val("")
         $("#numberInput").val("")
@@ -22,6 +20,8 @@ $("#submitOne").on("click", (event) => {
 
 });
 
+//Submit button  that takes in the users name and sends ajax request to the DB to determine if there is a user
+//and if there is a user the user's favorite number
 
 $("#submitTwo").on("click", (event) => {
     event.preventDefault();
@@ -33,11 +33,13 @@ $("#submitTwo").on("click", (event) => {
             type: "GET",
             data: id
         }).then(response => {
-            console.log(response)
+            // console.log(response)
             if (!response) {
-                alert("There is no user by this name")
+                alert("There is no user by this name, please try again")
             } else {
-                alert(`${response.name} your favorite number is ${response.number}`)
+                let responseName = response.name.toLowerCase();
+                let userName = responseName.charAt(0).toUpperCase() + responseName.substr(1);
+                alert(`${userName} your favorite number is ${response.number} !`)
             }
         })
 

@@ -20,12 +20,8 @@ app.set("views", __dirname + "/views");
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static("nodules/bootstrap/dist"));
 
-//Start Routes====================================
-// app.get('/', function(req, res){
-//     res.end("Hola")
-// })
-
-
+//Start Routes===================================
+//HTML and API routes initialized
 let htmlRoutes = require("./routes/html-routes.js")
 let apiRoutes = require("./routes/api-routes.js");
 
